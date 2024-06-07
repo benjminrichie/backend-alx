@@ -6,7 +6,6 @@ import userRouter from "./routes/userRoute.js";
 import 'dotenv/config';
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
-// import path from 'path';
 import fs from 'fs';
 
 console.log('DATABASE_URL:', process.env.DATABASE_URL);
@@ -41,7 +40,7 @@ app.use("/api/order", orderRouter);
 app.get('/favicon.ico', (req, res) => {
     // Return a 200 OK response with an empty body for requests to /favicon.ico
     res.status(200).send();
-  });
+});
 
 app.get("/", (req, res) => {
     res.send("API Working");
@@ -51,14 +50,12 @@ app.listen(port, () => {
     console.log(`Server started on http://localhost:${port}`);
 });
 
-
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });
 
-// Export the Express app for Vercel
 export default app;
 
 
